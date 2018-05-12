@@ -6,16 +6,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-
+/**
+ * 
+ * @author å—é˜³å¾·åˆšç‰ˆæƒæ‰€æœ‰,ä¼é¹…å·:2855128836<br>
+ *2018å¹´5æœˆ12æ—¥ä¸‹åˆ8:00:43<br>
+ * è¯´æ˜:c3p0æ•°æ®æºå·¥å…·ç±»
+ */
 public class DsUtil {
-	// Õâ¸öwebĞèÒªÒ»¸ö¾Í¿ÉÒÔÁË
+	// ï¿½ï¿½ï¿½webï¿½ï¿½ÒªÒ»ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½
 	private static ComboPooledDataSource cds = new ComboPooledDataSource();
 
 	public static Connection getConn() throws SQLException {
 		return cds.getConnection();
 	}
 	public static void free(Statement stmt, Connection conn) {
-		// Ê×ÏÈ²»ÄÜÊÇÒ»¸ötry,ÒòÎªstmtÄ¾ÓĞ¹Ø±Õ£¬connÈÔÈ»Òª¹Ø±Õ
+		// ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½try,ï¿½ï¿½ÎªstmtÄ¾ï¿½Ğ¹Ø±Õ£ï¿½connï¿½ï¿½È»Òªï¿½Ø±ï¿½
 		/*
 		 * try { stmt.close(); conn.close(); } catch (SQLException e) { // TODO
 		 * Auto-generated catch block e.printStackTrace(); }
