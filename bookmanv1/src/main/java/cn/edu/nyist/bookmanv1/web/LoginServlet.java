@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import cn.edu.nyist.bookmanv1.biz.AdminBiz;
 import cn.edu.nyist.bookmanv1.biz.impl.AdminBizImpl;
 
-
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,34 +21,34 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//1 »ñÈ¡ÓÃ»§ÊäÈë
-				String name=request.getParameter("name");
-				String pwd=request.getParameter("pwd");
-				String vcode=request.getParameter("vcode");
-				//ÔÚ²éÑ¯Êı¾İ¿âÖ®Ç°Ö´ĞĞ
-				HttpSession session = request.getSession(); 
-				String  serverVcode=(String) session.getAttribute("validateCode");
-				//ÑéÖ¤Âë²»Çø·Ö´óĞ¡Ğ´
-				if (!serverVcode.equalsIgnoreCase(vcode)) {
-					 //Ê§°Ü
-					request.setAttribute("msg", "ÑéÖ¤Âë´íÎó");
-					request.setAttribute("name", name);
-					request.getRequestDispatcher("login.jsp").forward(request, response);
-					return ;
-				}
-				//2 µ½Êı¾İ²éÑ¯
-				 AdminBiz adminBiz=new AdminBizImpl();
-				 boolean ret=adminBiz.findAdminByNameAndPwd(name,pwd);
-				//3 ¸øÓÃ»§ÏìÓ¦
-				if (ret) {
-					response.sendRedirect("main.jsp");
-				} else {
-		            //Ê§°Ü
-					request.setAttribute("msg", "ÓÃ»§Ãû»òÃÜÂë´íÎó");
-					request.setAttribute("name", name);
-					request.getRequestDispatcher("login.jsp").forward(request, response);
-				}
-		
+		// 1 è·å–å‚æ•°
+		String name = request.getParameter("name");
+		String pwd = request.getParameter("pwd");
+		String vcode = request.getParameter("vcode");
+		// æ‰§è¡ŒéªŒè¯ç 
+		HttpSession session = request.getSession();
+		String serverVcode = (String) session.getAttribute("validateCode");
+		// éªŒè¯ç ä¸å¯¹
+		if (!serverVcode.equalsIgnoreCase(vcode)) {
+			// è®°å½•é”™è¯¯ä¿¡æ¯
+			request.setAttribute("msg", "éªŒè¯ç é”™è¯¯");
+			request.setAttribute("name", name);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+			return;
+		}
+		// 2 è°ƒç”¨ä¸šåŠ¡å±‚
+		AdminBiz adminBiz = new AdminBizImpl();
+		boolean ret = adminBiz.findAdminByNameAndPwd(name, pwd);
+		// 3 ç»™ç”¨æˆ·ä¸€ä¸ªå“åº”
+		if (ret) {
+			response.sendRedirect("main.jsp");
+		} else {
+			// ç™»é™†å¤±è´¥
+			request.setAttribute("msg", "ç”¨æˆ·åæˆ–è€…å¯†ç é”™è¯¯");
+			request.setAttribute("name", name);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
+
 	}
 
 }

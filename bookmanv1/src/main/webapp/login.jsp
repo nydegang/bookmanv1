@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<meta  charset="utf-8">
+<title>注册</title>
 <!-- 1、告诉浏览器表缩放 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -68,12 +68,8 @@
 	</div>
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.js">
-		
-	</script>
-	<script type="text/javascript" src="bower_components/jquery-validation-bootstrap-tooltip/jquery-validate.bootstrap-tooltip.js">
-		
-	</script>
+	<script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.js"></script>
+	<script type="text/javascript" src="bower_components/jquery-validation-bootstrap-tooltip/jquery-validate.bootstrap-tooltip.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$("#vcodeImg").click(function(evt) {
