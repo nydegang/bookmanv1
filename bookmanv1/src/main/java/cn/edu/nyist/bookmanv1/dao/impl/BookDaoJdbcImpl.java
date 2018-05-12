@@ -7,7 +7,12 @@ import java.util.Date;
 
 import cn.edu.nyist.bookmanv1.dao.BookDao;
 import cn.edu.nyist.bookmanv1.util.DsUtil;
-
+/**
+ * 
+ * @author 南阳德刚版权所有,企鹅号:2855128836<br>
+ *2018年5月12日下午7:58:38<br>
+ * 说明:书籍业务层实现
+ */
 public class BookDaoJdbcImpl implements BookDao {
 
 	@Override
