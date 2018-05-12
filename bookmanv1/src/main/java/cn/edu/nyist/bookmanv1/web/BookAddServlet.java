@@ -30,7 +30,7 @@ public class BookAddServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		// 1 解决上传
+		// 0 解决上传
 		Part part = request.getPart("photo");
 		String fileName = part.getHeader("Content-Disposition").split(";")[2].split("=")[1].replace("\"", "");
 		// 解决IE下错误问题
@@ -40,7 +40,7 @@ public class BookAddServlet extends HttpServlet {
 		String ext = fileName.substring(fileName.lastIndexOf('.') + 1);
 		String newFileName = UUID.randomUUID().toString() + "." + ext;
 		part.write(request.getServletContext().getRealPath("upload/" + newFileName));
-		// 获取参数
+		// 1获取参数
 		String name = request.getParameter("name");
 		String descri = request.getParameter("descri");
 		String strPrice = request.getParameter("price");
@@ -56,10 +56,10 @@ public class BookAddServlet extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		// 3 调用业务层保存
+		// 2 调用业务层保存
 		BookBiz bookBiz = new BookBizImpl();
 		int ret = bookBiz.saveBook(name, descri, price, author, tid, newFileName, pubDate);
-		// 4 给用户反馈
+		// 3 给用户反馈
 		response.setContentType("text/html;charset=utf-8");
 		if (ret > 0) {
 			response.getWriter().write("添加成功");
