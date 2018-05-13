@@ -13,18 +13,14 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  * 说明:c3p0数据源工具类
  */
 public class DsUtil {
-	// ���web��Ҫһ���Ϳ�����
+	// 
 	private static ComboPooledDataSource cds = new ComboPooledDataSource();
 
 	public static Connection getConn() throws SQLException {
 		return cds.getConnection();
 	}
 	public static void free(Statement stmt, Connection conn) {
-		// ���Ȳ�����һ��try,��Ϊstmtľ�йرգ�conn��ȻҪ�ر�
-		/*
-		 * try { stmt.close(); conn.close(); } catch (SQLException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
+		
 		if (stmt != null) {
 
 			try {

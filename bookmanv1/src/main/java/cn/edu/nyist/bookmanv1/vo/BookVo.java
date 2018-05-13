@@ -2,7 +2,12 @@ package cn.edu.nyist.bookmanv1.vo;
 
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * 
+ * @author 南阳德刚版权所有,企鹅号:2855128836<br>
+ *2018年5月13日上午10:59:41<br>
+ * 说明:遵循JavaBean规范要求书写
+ */
 public class BookVo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;

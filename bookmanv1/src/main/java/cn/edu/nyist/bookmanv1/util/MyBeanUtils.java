@@ -11,17 +11,17 @@ import org.apache.commons.beanutils.converters.DateConverter;
 import org.apache.commons.beanutils.converters.DateTimeConverter;
 /**
  * 
- * @author ÄÏÑôµÂ¸Õ<br>
- * 2015Äê5ÔÂ11ÈÕ ÏÂÎç3:56:16<br>
+ * @author å—é˜³å¾·åˆš<br>
+ * 2015å¹´5æœˆ11æ—¥ ä¸‹åˆ3:56:16<br>
  *
- * ÀàËµÃ÷:¾ÀÕıÄ¬ÈÏÇé¿öÏÂÈÕÆÚ×ª»»´íÎóµÄÎÊÌâ
+ * ç±»è¯´æ˜:çº æ­£é»˜è®¤æƒ…å†µä¸‹æ—¥æœŸè½¬æ¢é”™è¯¯çš„é—®é¢˜
  */
 public class MyBeanUtils {
 	/**
 	 * 
-	 * @param bean Òª±»¸³ÖµµÄJavaBean
-	 * @param properties °üº¬ÖµµÄmap¶ÔÏó
-	 * @param dateFormat Èç¹ûÓĞÈÕÆÚÔòĞèÒªÖ¸¶¨ÈÕÆÚ¸ñÊ½,ÎŞÔòÖ¸¶¨Îªnull
+	 * @param bean è¦è¢«èµ‹å€¼çš„JavaBean
+	 * @param properties åŒ…å«å€¼çš„mapå¯¹è±¡
+	 * @param dateFormat å¦‚æœæœ‰æ—¥æœŸåˆ™éœ€è¦æŒ‡å®šæ—¥æœŸæ ¼å¼
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void populate(Object bean, Map properties, String dateFormat) {
