@@ -123,7 +123,7 @@
 		});
 	</script>
 	<script type="text/javascript">
-            function fillSel(){
+            function fillSel(types){
               var sel=document.getElementById("selectTid");
               for (var i = 0; i < types.length; i++) {
             	  sel.appendChild(new Option(types[i].name,types[i].id));
@@ -131,6 +131,6 @@
             }
 	</script>
 	<!-- onload：表示JavaScript加载完毕，然后再去找var types这样才能找到 -->
-	<script type="text/javascript" src="findAllTypes" onload="fillSel()"></script>
+	<iframe src="findAllTypes" style="display: none;"></iframe>
 </body>
 </html>

@@ -35,8 +35,9 @@ public class FindAllTypesServlet extends HttpServlet {
 		TypeBiz typeBiz=new TypeBizImpl();
 		List<TypeVo> ls=typeBiz.findAllTypes();
 		//返回JavaScript类型类型
-		response.setContentType("text/javascript;charset=utf-8");
-		String js="var types= [";
+		response.setContentType("text/html;charset=utf-8");
+		response.getWriter().write("<script>");
+		String js="[";
 		for (int i=0;i<ls.size();i++) {
 			js+="{id:"+ls.get(i).getId()+",name:'"+ls.get(i).getName()+"'}";
 			if (i<ls.size()-1) {
@@ -44,7 +45,9 @@ public class FindAllTypesServlet extends HttpServlet {
 			}
 		}
 		js+="]";
-		response.getWriter().write(js);
+		//fillSel在父窗口定义，要告诉到父窗口找
+		response.getWriter().write("window.parent.fillSel("+js+");");
+		response.getWriter().write("</script>");
 		
 	}
 
