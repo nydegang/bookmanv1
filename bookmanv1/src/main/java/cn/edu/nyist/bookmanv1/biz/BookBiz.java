@@ -1,6 +1,6 @@
 package cn.edu.nyist.bookmanv1.biz;
 
-import java.util.Date;
+import cn.edu.nyist.bookmanv1.vo.BookVo;
 /**
  * 
  * @author 南阳德刚版权所有,企鹅号:2855128836<br>
@@ -9,6 +9,7 @@ import java.util.Date;
  */
 public interface BookBiz {
 
-	int saveBook(String name, String descri, double price, String author, int tid, String newFileName, Date pubDate);
+	//int saveBook(String name, String descri, double price, String author, int tid, String newFileName, Date pubDate);
+	int saveBook(BookVo bookVo);
 
 }
