@@ -17,19 +17,12 @@ public class AdminDaoJdbcImpl implements AdminDao {
 		ResultSet rs = null;
 		boolean ret = false;
 		try {
-			conn = DsUtil.getConn();
-			//修改二：表用拼接字符串，用占位符写法
-			//String sql = "select * from t_user where name='" + name + "' and pwd='" + pwd + "'";
-			//?就是占位符，表示将来要用一个具体来替代改位置
+			conn = DsUtil.getConn();			
 			String  sql="select * from t_admin where name=? and pwd=?";
-			System.out.println(sql);
-			//stmt = conn.createStatement();
-			stmt=conn.prepareStatement(sql);
-			//对特殊字符转义
+			System.out.println(sql);			
+			stmt=conn.prepareStatement(sql);			
 			stmt.setString(1, name);
 			stmt.setString(2, pwd);
-			//修改三:因为上面已经传入并非占位符赋值了，因而表再传
-			//rs = stmt.executeQuery(sql);
 			rs=stmt.executeQuery();
 			if (rs.next()) {
 				ret = true;

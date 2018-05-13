@@ -23,7 +23,7 @@ public class TypeDaoJdbcImpl implements TypeDao {
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery("select * from t_type");
 			List<TypeVo> ls=new ArrayList<>();
-			while (rs.next()) {
+			while (rs.next()) {//每行对应一个对象
 				TypeVo typeVo=new TypeVo();
 				typeVo.setId(rs.getInt("id"));
 				typeVo.setName(rs.getString("name"));

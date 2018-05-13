@@ -2,11 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta  charset="utf-8">
+<meta charset="utf-8">
 <title>注册</title>
 <!-- 1、告诉浏览器表缩放 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 .container-fluid {
@@ -39,18 +38,15 @@
 						</div>
 					</div>
 					<div class="form-group">
-
 						<label for="inputPwd" class="col-sm-2 control-label"> 密码 </label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" id="inputPwd" name="pwd" />
 						</div>
 					</div>
 					<div class="form-group">
-
 						<label for="inputVcode" class="col-sm-2 control-label"> 验证码 </label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="inputVcode" name="vcode" maxlength="4" />
-
 						</div>
 						<div class="col-sm-4">
 							<img alt="" src="vcode.png" id="vcodeImg" title="单击换图片">
@@ -58,7 +54,6 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-
 							<button type="submit" class="btn btn-default">登陆</button>
 						</div>
 					</div>
