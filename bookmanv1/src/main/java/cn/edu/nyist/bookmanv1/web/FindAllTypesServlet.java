@@ -31,13 +31,20 @@ public class FindAllTypesServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1��ȡ����
-		//2����ҵ���
+		
 		TypeBiz typeBiz=new TypeBizImpl();
 		List<TypeVo> ls=typeBiz.findAllTypes();
-		//3 ���û�һ����Ӧ
-		request.setAttribute("ls", ls);
-		request.getRequestDispatcher("bookAdd.jsp").forward(request, response);
+		//返回JavaScript类型类型
+		response.setContentType("text/javascript;charset=utf-8");
+		String js="var types= [";
+		for (int i=0;i<ls.size();i++) {
+			js+="{id:"+ls.get(i).getId()+",name:'"+ls.get(i).getName()+"'}";
+			if (i<ls.size()-1) {
+				js+=",";
+			}
+		}
+		js+="]";
+		response.getWriter().write(js);
 		
 	}
 
