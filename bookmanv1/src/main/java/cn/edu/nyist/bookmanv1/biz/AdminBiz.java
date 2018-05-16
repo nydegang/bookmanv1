@@ -6,7 +6,7 @@ package cn.edu.nyist.bookmanv1.biz;
  * 说明:管理员业务层
  */
 public interface AdminBiz {
-
+        //验证用户和密码是否合法
 	boolean findAdminByNameAndPwd(String name, String pwd);
 
 }
