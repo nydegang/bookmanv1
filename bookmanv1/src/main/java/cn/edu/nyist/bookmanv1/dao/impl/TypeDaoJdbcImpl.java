@@ -10,7 +10,12 @@ import java.util.List;
 import cn.edu.nyist.bookmanv1.dao.TypeDao;
 import cn.edu.nyist.bookmanv1.util.DsUtil;
 import cn.edu.nyist.bookmanv1.vo.TypeVo;
-
+/**
+ * 
+ * @author 南阳德刚版权所有,企鹅号:2855128836<br>
+ *2018年5月19日下午2:58:21<br>
+ * 说明:TypeDao实现类
+ */
 public class TypeDaoJdbcImpl implements TypeDao {
 
 	@Override

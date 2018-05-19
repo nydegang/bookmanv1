@@ -2,11 +2,12 @@ package cn.edu.nyist.bookmanv1.vo;
 
 import java.io.Serializable;
 import java.util.Date;
+
 /**
  * 
  * @author 南阳德刚版权所有,企鹅号:2855128836<br>
- *2018年5月13日上午10:59:41<br>
- * 说明:遵循JavaBean规范要求书写
+ *         2018年5月13日上午10:59:41<br>
+ *         说明:遵循JavaBean规范要求书写
  */
 public class BookVo implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -18,54 +19,71 @@ public class BookVo implements Serializable {
 	private String author;
 	private Date pubDate;
 	private String photo;
+
 	public BookVo() {
-		
+
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getTid() {
 		return tid;
 	}
+
 	public void setTid(int tid) {
 		this.tid = tid;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getDescri() {
 		return descri;
 	}
+
 	public void setDescri(String descri) {
 		this.descri = descri;
 	}
+
 	public double getPrice() {
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 	public String getAuthor() {
 		return author;
 	}
+
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+
 	public Date getPubDate() {
 		return pubDate;
 	}
+
 	public void setPubDate(Date pubDate) {
 		this.pubDate = pubDate;
 	}
+
 	public String getPhoto() {
 		return photo;
 	}
+
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}

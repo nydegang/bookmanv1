@@ -11,7 +11,10 @@ import cn.edu.nyist.bookmanv1.vo.TypeVo;
  *         说明:书籍类型业务层
  */
 public interface TypeBiz {
-
+/**
+ * 
+ * @return 返回所有类型
+ */
 	List<TypeVo> findAllTypes();
 
 }

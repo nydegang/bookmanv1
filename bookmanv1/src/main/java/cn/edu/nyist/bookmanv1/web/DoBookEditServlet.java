@@ -15,50 +15,57 @@ import cn.edu.nyist.bookmanv1.biz.BookBiz;
 import cn.edu.nyist.bookmanv1.biz.impl.BookBizImpl;
 import cn.edu.nyist.bookmanv1.util.MyBeanUtils;
 import cn.edu.nyist.bookmanv1.vo.BookVo;
+
 /**
  * 
  * @author 南阳德刚版权所有,企鹅号:2855128836<br>
- *2018年5月13日上午10:58:42<br>
- * 说明:书籍添加
+ *         2018年5月13日上午10:58:42<br>
+ *         说明:书籍添加
  */
-@WebServlet("/bookAdd")
+@WebServlet("/doBookEdit")
 @MultipartConfig
-public class BookAddServlet extends HttpServlet {
+public class DoBookEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BookAddServlet() {
+	public DoBookEditServlet() {
 		super();
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		// 0 获取上传文件
 		Part part = request.getPart("photo");
 		String fileName = part.getHeader("Content-Disposition").split(";")[2].split("=")[1].replace("\"", "");
-		// 解决IE下路径问题
-		fileName = fileName.lastIndexOf("\\") == -1 ? fileName : fileName.substring(fileName.lastIndexOf("\\") + 1);
-
-		// 解决名字重复问题
-		String ext = fileName.substring(fileName.lastIndexOf('.') + 1);
-		String newFileName = UUID.randomUUID().toString() + "." + ext;
-		part.write(request.getServletContext().getRealPath("upload/" + newFileName));
-		// 1获取参数		
-		BookVo bookVo=new BookVo();
+		String newFileName = "";
+		if (!fileName.equals("")) { // 不是空字符串就要上传文件
+			// 解决IE下路径问题
+			fileName = fileName.lastIndexOf("\\") == -1 ? fileName : fileName.substring(fileName.lastIndexOf("\\") + 1);
+			// 解决名字重复问题
+			String ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+			newFileName = UUID.randomUUID().toString() + "." + ext;
+			part.write(request.getServletContext().getRealPath("upload/" + newFileName));
+		}
+		// 1获取参数
+		BookVo bookVo = new BookVo();
 		MyBeanUtils.populate(bookVo, request.getParameterMap(), "yyyy-MM-dd");
-		//修正图片名字为新名字
-		bookVo.setPhoto(newFileName);
+		// 修正图片名字为新名字
+		if (!fileName.equals("")) {
+			bookVo.setPhoto(newFileName);
+		}
 		// 2 调用业务层
 		BookBiz bookBiz = new BookBizImpl();
-		int ret = bookBiz.saveBook(bookVo);
+		int ret = bookBiz.editBook(bookVo);
 		// 3 给用户一个界面
 		response.setContentType("text/html;charset=utf-8");
 		if (ret > 0) {
-			response.getWriter().write("添加成功");
+			response.sendRedirect("bookList");
 		} else {
 			request.setAttribute("msg", "添加失败");
-			request.getRequestDispatcher("bookAdd.jsp").forward(request, response);
+			//把用户刚才填写的回填
+			request.setAttribute("bookVo", bookVo);
+			request.getRequestDispatcher("bookEdit.jsp").forward(request, response);
+
 		}
 
 	}

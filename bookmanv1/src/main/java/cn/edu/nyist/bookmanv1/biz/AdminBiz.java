@@ -7,7 +7,12 @@ package cn.edu.nyist.bookmanv1.biz;
  *         说明:管理员业务层
  */
 public interface AdminBiz {
-
+	/**
+	 * 
+	 * @param name
+	 * @param pwd
+	 * @return 返回登陆是否成功
+	 */
 	boolean findAdminByNameAndPwd(String name, String pwd);
 
 }

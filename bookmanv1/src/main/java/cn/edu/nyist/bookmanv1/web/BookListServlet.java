@@ -13,6 +13,7 @@ import cn.edu.nyist.bookmanv1.biz.BookBiz;
 import cn.edu.nyist.bookmanv1.biz.impl.BookBizImpl;
 import cn.edu.nyist.bookmanv1.util.PageConstant;
 import cn.edu.nyist.bookmanv1.vo.BookVo;
+import cn.edu.nyist.bookmanv1.vo.TypeVo;
 
 /**
  * 
@@ -31,7 +32,7 @@ public class BookListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 1
+		// 1 获取参数
 		String strPageNo = request.getParameter("pageNo");
 		int pageNo;
 		try {
@@ -39,16 +40,29 @@ public class BookListServlet extends HttpServlet {
 		} catch (NumberFormatException e) {
 			pageNo = 1;// 默认看第一页
 		}
-		// 2
+		//获取搜索条件
+		String name=request.getParameter("name");
+		String strTid=request.getParameter("tid");
+		int   tid=-1;
+		 try {
+			tid=Integer.parseInt(strTid);
+		} catch (NumberFormatException e) {
+
+		}
+		// 2 调用业务层
 		BookBiz bookBiz = new BookBizImpl();
-		List<BookVo> ls = bookBiz.findAllBooks(pageNo);
-		int total = bookBiz.findTotal();
-		// 3
+		List<BookVo> ls = bookBiz.findAllBooks(pageNo,name,tid);
+		int total = bookBiz.findTotal(name,tid);
+		List<TypeVo> types=bookBiz.findAllTypes();
+		// 3 根据业务层结果返回视图
 		if (total % PageConstant.PAGE_SIZE == 0) {
 			request.setAttribute("totalPage", total / PageConstant.PAGE_SIZE);
 		} else {
 			request.setAttribute("totalPage", total / PageConstant.PAGE_SIZE + 1);
 		}
+		request.setAttribute("name", name);
+		request.setAttribute("tid", tid);
+		request.setAttribute("types", types);
 		request.setAttribute("pageNo", pageNo);
 		request.setAttribute("ls", ls);
 		request.getRequestDispatcher("bookList.jsp").forward(request, response);

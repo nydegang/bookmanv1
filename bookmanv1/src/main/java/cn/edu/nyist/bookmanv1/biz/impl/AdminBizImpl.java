@@ -10,7 +10,6 @@ import cn.edu.nyist.bookmanv1.dao.impl.AdminDaoJdbcImpl;
  * 说明:管理员业务层实现
  */
 public class AdminBizImpl implements AdminBiz {
-
 	@Override
 	public boolean findAdminByNameAndPwd(String name, String pwd) {
 		AdminDao adminDao=new AdminDaoJdbcImpl();
